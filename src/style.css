@@ -1,0 +1,22 @@
+body {
+    min-height: 100vh;
+
+    margin:0;
+    padding:0;
+
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+
+    background-color: #18181b;
+    color: white;
+}
+
+.sidebar {
+    padding: 1rem;
+
+    background-color: #27272a;
+}
+
+ul {
+    list-style-type: none;
+}
