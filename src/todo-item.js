@@ -59,3 +59,5 @@ class TodoItem {
         this.#notes = value;
     }
 }
+
+export default TodoItem;
