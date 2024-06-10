@@ -10,6 +10,10 @@ class TodoList {
         return this.#list;
     }
 
+    set list (value) {
+        this.#list = value;
+    }
+
     addItem(value) {
         this.#list.push(value);
     }
