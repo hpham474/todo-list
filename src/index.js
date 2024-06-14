@@ -55,6 +55,7 @@ const projectSidebar = document.querySelector(".sidebar .projects");
 const title = document.createElement("h2");
 title.textContent = "Projects";
 const projectList = document.createElement("ul");
+projectList.classList.add("project-list");
 for (let i = 0; i < projects.length; i++) {
     const projectButton = document.createElement("button");
     projectButton.textContent = projects[i];
