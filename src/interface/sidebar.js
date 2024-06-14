@@ -7,10 +7,13 @@ function generateProjecSidebar (projects) {
     projectList.classList.add("project-list");
 
     for (let i = 0; i < projects.length; i++) {
+        const listElement = document.createElement("li");
         const projectButton = document.createElement("button");
 
         projectButton.textContent = projects[i];
-        projectList.appendChild(projectButton);
+
+        listElement.appendChild(projectButton)
+        projectList.appendChild(listElement);
     }
 
     projectSidebar.appendChild(title);

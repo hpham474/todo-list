@@ -12,6 +12,8 @@ const content = document.querySelector(".content");
 const title = document.createElement("h1");
 const taskList = document.createElement("ul");
 
+title.textContent = "Inbox";
+
 for(let i = 0; i < todoList.length; i++) {
     const listElement = document.createElement("li");
     const taskButton = document.createElement("button");
