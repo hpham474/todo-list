@@ -10,6 +10,10 @@ class TodoList {
         return this.#list;
     }
 
+    get length () {
+        return this.#list.length;
+    }
+
     get projects () {
         let projects = [];
         for (let i = 0; i < this.#list.length; i++) {
@@ -23,6 +27,10 @@ class TodoList {
 
     set list (value) {
         this.#list = value;
+    }
+
+    getItem(value) {
+        return this.#list[value];
     }
 
     addItem(value) {
