@@ -10,6 +10,17 @@ class TodoList {
         return this.#list;
     }
 
+    get projects () {
+        let projects = [];
+        for (let i = 0; i < this.#list.length; i++) {
+            if (!projects.includes(this.#list[i].project)) {
+                projects.push(this.#list[i].project);
+            }
+        }
+
+        return projects;
+    }
+
     set list (value) {
         this.#list = value;
     }
