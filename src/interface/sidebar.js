@@ -1,5 +1,8 @@
-function generateProjectSidebar (projects) {
+import generateInbox from './inbox';
+
+function generateProjectSidebar (todoList) {
     const projectSidebar = document.querySelector(".sidebar .projects");
+    const projects = todoList.projects;
 
     projectSidebar.innerHTML = "";
 
@@ -14,6 +17,15 @@ function generateProjectSidebar (projects) {
         const projectButton = document.createElement("button");
 
         projectButton.textContent = projects[i];
+
+        projectButton.addEventListener("click", () => {
+            generateInbox(todoList.filter((value) => {
+                if (value.project === projects[i]) {
+                    return true;
+                }
+                return false;
+            }));
+        });
 
         listElement.appendChild(projectButton)
         projectList.appendChild(listElement);

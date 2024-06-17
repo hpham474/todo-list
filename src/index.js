@@ -33,7 +33,7 @@ urgent.addEventListener("click", () => {
 });
 
 // default projects
-generateProjectSidebar(todoList.projects);
+generateProjectSidebar(todoList);
 
 // default page
 generateInbox(todoList);
