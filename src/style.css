@@ -45,6 +45,7 @@ body {
     border-radius: 1rem;
 
     font-size: 1.5rem;
+    text-overflow: ellipsis;
 }
 
 .task-filter button:hover,
