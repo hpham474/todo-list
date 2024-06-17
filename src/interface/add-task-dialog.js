@@ -1,7 +1,12 @@
 import { format } from "date-fns";
+import generateProjectSidebar from "./sidebar";
+import addTask from "../todo-list/add-task";
 
-function generateAddTaskDialog (projects) {
+function generateAddTaskDialog (todoList) {
     const dialog = document.querySelector("dialog");
+
+    dialog.innerHTML = "";
+
     const form = document.createElement("form");
     const h1 = document.createElement("h1");
 
@@ -13,12 +18,12 @@ function generateAddTaskDialog (projects) {
     const dialogForm = document.querySelector("dialog form");
 
     const titleDiv = generateTitleInput();
-    const projectDiv = generateProjectInput(projects);
+    const projectDiv = generateProjectInput(todoList.projects);
     const dateDiv = generateDateInput();
     const descriptionDiv = generateDescriptionInput();
     const notesDiv = generateNotesInput();
     const urgencyDiv = generateUrgencyInput();
-    const buttonsDiv = generateButtons();
+    const buttonsDiv = generateButtons(todoList);
 
     h1.textContent = "Add Task";
 
@@ -108,6 +113,7 @@ function generateDateInput() {
     dateInput.setAttribute("id", "date");
     dateInput.setAttribute("name", "date");
     dateInput.setAttribute("type", "date");
+    dateInput.setAttribute("value", today);
     dateInput.setAttribute("min", today);
     dateInput.setAttribute("required", "");
 
@@ -196,7 +202,7 @@ function generateUrgencyInput() {
     return urgencyDiv;
 }
 
-function generateButtons() {
+function generateButtons(todoList) {
     const dialog = document.querySelector("dialog");
     const dialogForm = document.querySelector("dialog form");
     const buttonsDiv = document.createElement("div");
@@ -213,30 +219,13 @@ function generateButtons() {
     dialogForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const title = document.getElementById("title").value;
-        const project = document.getElementById("project").value;
-        const date = document.getElementById("date").value;
-        const description = document.getElementById("description").value;
-        const notes = document.getElementById("notes").value;
-        const urgency = document.getElementById("urgency").value;
-
-        console.log(
-            `${title} + \n + 
-            ${project} + \n + 
-            ${date} + \n + 
-            ${description} + \n 
-            ${notes} + \n 
-            ${urgency} + \n`);
+        addTask(todoList);
 
         dialog.close();
-
-        dialog.innerHTML = "";
-        dialog
     });
 
     closeButton.addEventListener("click", () => {
         dialog.close();
-        dialog.innerHTML = "";
     });
 
     buttonsDiv.appendChild(submitButton);

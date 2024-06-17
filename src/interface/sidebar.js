@@ -1,5 +1,8 @@
 function generateProjectSidebar (projects) {
     const projectSidebar = document.querySelector(".sidebar .projects");
+
+    projectSidebar.innerHTML = "";
+
     const title = document.createElement("h2");
     const projectList = document.createElement("ul");
 

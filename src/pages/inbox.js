@@ -1,5 +1,8 @@
 function generateInbox(todoList) {
     const content = document.querySelector(".content");
+
+    content.innerHTML = "";
+
     const title = document.createElement("h1");
     const taskList = document.createElement("ul");
 
