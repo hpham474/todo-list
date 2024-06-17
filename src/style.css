@@ -17,6 +17,12 @@ body {
     color: white;
 }
 
+ul {
+    list-style-type: none;
+}
+
+/* Sidebar and Sidebar Buttons */
+
 .sidebar {
     padding: 1rem;
 
@@ -50,12 +56,12 @@ body {
 
 .task-filter button:hover,
 .project-list button:hover {
-    background-color: #f87171;
+    background-color: #ef4444;
 }
 
 .task-filter button:active,
 .project-list button:active {
-    background-color: #ef4444;
+    background-color: #dc2626
 }
 
 .projects {
@@ -76,9 +82,7 @@ body {
     gap: 1.5rem;
 }
 
-ul {
-    list-style-type: none;
-}
+/* Task List */
 
 .content {
     padding: 3rem;
@@ -94,6 +98,8 @@ ul {
 
     gap: 1rem;
 }
+
+/* Tasks */
 
 .content li > div {
     width: 100%;
@@ -168,4 +174,113 @@ ul {
 .content .checkbox:active,
 .content .edit:active{
     background-color: #78787f;
+}
+
+/* Dialog Form */
+
+dialog {
+    width: 30rem;
+    padding: 1rem;
+
+    background-color: #27272a;
+
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+
+    border-radius: 1rem;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form h1 {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.form-input-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.buttons-row button {
+    height: 2rem;
+    width: 5rem;
+
+    border: none;
+    border-radius: .5rem;
+
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+.submit-form {
+    background-color: #f87171;
+}
+
+.submit-form:hover {
+    background-color: #ef4444;
+}
+
+.submit-form:active {
+    background-color: #dc2626
+}
+
+.close-form {
+    background-color: #a1a1aa;
+}
+
+.close-form:hover {
+    background-color: #8b8b93;
+}
+
+.close-form:active {
+    background-color: #78787f;
+}
+
+label {
+    color: white;
+    height: 1.5rem;
+}
+
+input,
+select {
+    height: 1.5rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input,
+textarea {
+    padding: 5px 5px;
+}
+
+input,
+select,
+textarea {
+    background-color: #3f3f46;
+    
+    color: white;
+    outline: none;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 1px solid #ef4444 ;
 }

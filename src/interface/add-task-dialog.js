@@ -209,6 +209,7 @@ function generateButtons(todoList) {
     const submitButton = document.createElement("button");
     const closeButton = document.createElement("button");
 
+    buttonsDiv.classList.add("buttons-row");
     submitButton.setAttribute("type", "submit");
     submitButton.classList.add("submit-form");
     submitButton.textContent = "Submit";
@@ -228,9 +229,9 @@ function generateButtons(todoList) {
         dialog.close();
     });
 
-    buttonsDiv.appendChild(submitButton);
     buttonsDiv.appendChild(closeButton);
-
+    buttonsDiv.appendChild(submitButton);
+    
     return buttonsDiv;
 }
 
