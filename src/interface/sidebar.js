@@ -1,4 +1,4 @@
-function generateProjecSidebar (projects) {
+function generateProjectSidebar (projects) {
     const projectSidebar = document.querySelector(".sidebar .projects");
     const title = document.createElement("h2");
     const projectList = document.createElement("ul");
@@ -20,4 +20,4 @@ function generateProjecSidebar (projects) {
     projectSidebar.appendChild(projectList);
 }
 
-export default generateProjecSidebar;
+export default generateProjectSidebar;
