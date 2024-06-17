@@ -1,3 +1,5 @@
+import { format, compareAsc } from "date-fns";
+
 function generateInbox(todoList) {
     const content = document.querySelector(".content");
 
@@ -5,6 +7,8 @@ function generateInbox(todoList) {
 
     const title = document.createElement("h1");
     const taskList = document.createElement("ul");
+    const today = new Date();
+    let previousDate = "";
 
     title.textContent = "Inbox";
 
@@ -40,6 +44,28 @@ function generateInbox(todoList) {
 
         checkBoxButton.ariaLabel = "complete";
         editButton.ariaLabel = "edit"
+
+        const overdueCheck = compareAsc(
+            format(today, "yyyy-MM-dd"),
+            todoList.getItem(i).dueDate);
+
+        if (overdueCheck === 1 && previousDate !== "Overdue") {
+            const date = document.createElement("h2");
+            date.textContent = "Overdue";
+            taskList.appendChild(date);
+            previousDate = "Overdue";
+        } else if (overdueCheck === 0 && previousDate !== "Today") {
+            const date = document.createElement("h2");
+            date.textContent = "Today";
+            taskList.appendChild(date);
+            previousDate = "Today"
+        } else if (overdueCheck === -1 && previousDate !== todoList.getItem(i).dueDate) {
+            const date = document.createElement("h2");
+            date.textContent = format(todoList.getItem(i).dueDate, "MMM dd");
+            taskList.appendChild(date);
+            previousDate = todoList.getItem(i).dueDate;
+        }
+
 
         taskButton.appendChild(titleTaskButton);
         taskButton.appendChild(dateTaskButton);

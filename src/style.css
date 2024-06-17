@@ -99,6 +99,10 @@ ul {
     gap: 1rem;
 }
 
+.content h1 {
+    font-size: 3rem;
+}
+
 /* Tasks */
 
 .content li > div {
