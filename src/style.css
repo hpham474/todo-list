@@ -131,7 +131,12 @@ ul {
 .content .task {
     width: 100%;
     height: calc(5rem - 2px); /* -2px for border */
-    padding: 1rem;
+    padding: .5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    justify-items: center;
 
     border: none;
     border-left: 1px solid #71717a;
@@ -140,9 +145,16 @@ ul {
     background-color: #3f3f46;
     color: white;
 
-    font-size: 2rem;
     text-align: left;
     text-overflow: ellipsis;
+}
+
+.task h2 {
+    font-size: 2rem;
+}
+
+.task p {
+    font-size: .75rem;
 }
 
 .content .edit {

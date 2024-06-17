@@ -14,6 +14,8 @@ function generateInbox(todoList) {
         const checkBoxButton = document.createElement("button");
         const taskButton = document.createElement("button");
         const editButton = document.createElement("button");
+        const titleTaskButton = document.createElement("h2");
+        const dateTaskButton = document.createElement("p");
 
         checkBoxButton.classList.add("checkbox");
         taskButton.classList.add("task");
@@ -26,7 +28,8 @@ function generateInbox(todoList) {
                 viewBox="0 0 24 24"> 
                     <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
             </svg>`
-        taskButton.textContent = todoList.getItem(i).title;
+        titleTaskButton.textContent = todoList.getItem(i).title;
+        dateTaskButton.textContent = `Due: ${todoList.getItem(i).dueDate}`;
         editButton.innerHTML = 
             `<svg 
                 class="editSVG" 
@@ -36,7 +39,10 @@ function generateInbox(todoList) {
             </svg>`
 
         checkBoxButton.ariaLabel = "complete";
-        taskButton.ariaLabel = "edit"
+        editButton.ariaLabel = "edit"
+
+        taskButton.appendChild(titleTaskButton);
+        taskButton.appendChild(dateTaskButton);
 
         taskDiv.appendChild(checkBoxButton);
         taskDiv.appendChild(taskButton);

@@ -14,6 +14,9 @@ const urgent = document.querySelector(".urgent");
 addTask.addEventListener("click", () => {
     generateAddTaskDialog(todoList);
 });
+inbox.addEventListener("click", () => {
+    generateInbox(todoList);
+});
 
 // default projects
 generateProjectSidebar(todoList.projects);

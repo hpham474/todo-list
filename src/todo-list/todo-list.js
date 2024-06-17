@@ -1,4 +1,5 @@
 import TodoItem from "./todo-item";
+import { compareAsc } from "date-fns";
 
 class TodoList {
     #list;
@@ -27,6 +28,7 @@ class TodoList {
 
     set list (value) {
         this.#list = value;
+        this.sortByDate();
     }
 
     getItem(value) {
@@ -35,6 +37,13 @@ class TodoList {
 
     addItem(value) {
         this.#list.push(value);
+        this.sortByDate();
+    }
+
+    sortByDate() {
+        this.#list.sort((a, b) => {
+            return compareAsc(a.dueDate, b.dueDate);
+        });
     }
 }
 
