@@ -45,6 +45,17 @@ class TodoList {
             return compareAsc(a.dueDate, b.dueDate);
         });
     }
+
+    filter(fn) {
+        const filteredTodoList = new TodoList();
+        const filteredList = filteredTodoList.list;
+        for(let i = 0; i < this.length; i++) {
+            if(fn(this.#list[i])) {
+                filteredList.push(this.#list[i]);
+            }
+        }
+        return filteredTodoList;
+    }
 }
 
 export default TodoList;

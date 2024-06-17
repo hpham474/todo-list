@@ -2,7 +2,8 @@ import './style.css';
 import getTodoList from './todo-list/default-list';
 import generateProjectSidebar from './interface/sidebar';
 import generateAddTaskDialog from './interface/add-task-dialog';
-import generateInbox from './pages/inbox';
+import generateInbox from './interface/inbox';
+import { format, compareAsc } from 'date-fns';
 
 const todoList = getTodoList();
 
@@ -16,6 +17,19 @@ addTask.addEventListener("click", () => {
 });
 inbox.addEventListener("click", () => {
     generateInbox(todoList);
+});
+today.addEventListener("click", () => {
+    generateInbox(todoList.filter((value) => {
+        return !compareAsc(value.dueDate, format(new Date(), "yyyy-MM-dd"))
+    }));
+});
+urgent.addEventListener("click", () => {
+    generateInbox(todoList.filter((value) => {
+        if (value.priority === 1 || value.priority === 2) {
+            return true;
+        }
+        return false;
+    }));
 });
 
 // default projects

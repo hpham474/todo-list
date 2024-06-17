@@ -1,6 +1,6 @@
 import TodoItem from "./todo-item";
 import generateProjectSidebar from "../interface/sidebar";
-import generateInbox from "../pages/inbox";
+import generateInbox from "../interface/inbox";
 
 function addTask(todoList) {
     const title = document.getElementById("title").value;
