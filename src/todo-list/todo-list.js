@@ -40,6 +40,10 @@ class TodoList {
         this.sortByDate();
     }
 
+    removeItem(value) {
+        this.#list.splice(value, 1);
+    }
+
     sortByDate() {
         this.#list.sort((a, b) => {
             return compareAsc(a.dueDate, b.dueDate);

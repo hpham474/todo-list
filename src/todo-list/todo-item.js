@@ -58,6 +58,18 @@ class TodoItem {
     set notes(value) {
         this.#notes = value;
     }
+
+    equals(other) {
+        if (!(other instanceof TodoItem)) {
+            return false;
+        }
+        return this.#title === other.#title &&
+            this.#project === other.#project &&
+            this.#description === other.#description &&
+            this.#dueDate === other.#dueDate &&
+            this.#priority === other.#priority &&
+            this.#notes === other.#notes;
+    }
 }
 
 export default TodoItem;

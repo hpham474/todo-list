@@ -1,4 +1,4 @@
-import generateInbox from './inbox';
+import displayTodoList from './display-list';
 
 function generateProjectSidebar (todoList) {
     const projectSidebar = document.querySelector(".sidebar .projects");
@@ -19,12 +19,7 @@ function generateProjectSidebar (todoList) {
         projectButton.textContent = projects[i];
 
         projectButton.addEventListener("click", () => {
-            generateInbox(todoList.filter((value) => {
-                if (value.project === projects[i]) {
-                    return true;
-                }
-                return false;
-            }));
+            displayTodoList(todoList, `${projects[i]}`);
         });
 
         listElement.appendChild(projectButton)

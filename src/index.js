@@ -2,7 +2,7 @@ import './style.css';
 import getTodoList from './todo-list/default-list';
 import generateProjectSidebar from './interface/sidebar';
 import generateAddTaskDialog from './interface/add-task-dialog';
-import generateInbox from './interface/inbox';
+import displayTodoList from './interface/display-list';
 import { format, compareAsc } from 'date-fns';
 
 const todoList = getTodoList();
@@ -16,24 +16,17 @@ addTask.addEventListener("click", () => {
     generateAddTaskDialog(todoList);
 });
 inbox.addEventListener("click", () => {
-    generateInbox(todoList);
+    displayTodoList(todoList);
 });
 today.addEventListener("click", () => {
-    generateInbox(todoList.filter((value) => {
-        return !compareAsc(value.dueDate, format(new Date(), "yyyy-MM-dd"))
-    }));
+    displayTodoList(todoList, "today");
 });
 urgent.addEventListener("click", () => {
-    generateInbox(todoList.filter((value) => {
-        if (value.priority === 1 || value.priority === 2) {
-            return true;
-        }
-        return false;
-    }));
+    displayTodoList(todoList, "urgent");
 });
 
 // default projects
 generateProjectSidebar(todoList);
 
 // default page
-generateInbox(todoList);
+displayTodoList(todoList);

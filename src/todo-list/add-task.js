@@ -1,6 +1,6 @@
 import TodoItem from "./todo-item";
 import generateProjectSidebar from "../interface/sidebar";
-import generateInbox from "../interface/inbox";
+import displayTodoList from "../interface/display-list";
 
 function addTask(todoList) {
     const title = document.getElementById("title").value;
@@ -20,8 +20,8 @@ function addTask(todoList) {
 
     todoList.addItem(task);
 
-    generateProjectSidebar(todoList.projects);
-    generateInbox(todoList);
+    generateProjectSidebar(todoList);
+    displayTodoList(todoList);
 }
 
 export default addTask;
