@@ -14,7 +14,16 @@ function displayTodoList(todoList, filter = "none") {
     const today = new Date();
     let previousDate = "";
 
-    title.textContent = "Inbox";
+    if (filter === "none") {
+        title.textContent = "Inbox";
+    } else if (filter === "today") {
+        title.textContent = "Today";
+    } else if (filter === "urgent") {
+        title.textContent = "Urgent";
+    } else{
+        title.textContent = "Inbox";
+    }
+    
 
     for(let i = 0; i < todoList.length; i++) {
         let listElement = document.createElement("li");
@@ -26,6 +35,7 @@ function displayTodoList(todoList, filter = "none") {
         } else if (filter === "urgent") {
             listElement = filterUrgent(todoList.getItem(i), todoList);
         } else if (todoList.projects.includes(filter)) {
+            title.textContent = filter;
             listElement = filterProject(todoList.getItem(i), todoList, filter);
         }
 
@@ -187,6 +197,7 @@ function filterToday(todoItem, todoList) {
 function filterUrgent(todoItem, todoList) {
     const listElement = document.createElement("li");
 
+    // filter
     if (!(todoItem.priority === 1 || todoItem.priority === 2)) {
         return listElement;
     }
@@ -250,6 +261,7 @@ function filterUrgent(todoItem, todoList) {
 function filterProject(todoItem, todoList, project) {
     const listElement = document.createElement("li");
 
+    // filter
     if (todoItem.project !== project) {
         return listElement;
     }

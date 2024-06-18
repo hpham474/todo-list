@@ -101,6 +101,7 @@ ul {
 
 .content h1 {
     font-size: 3rem;
+    text-overflow: ellipsis;
 }
 
 /* Tasks */
