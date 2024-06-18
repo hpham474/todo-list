@@ -1,7 +1,19 @@
 import { format } from "date-fns";
-import addTask from "../todo-list/add-task";
+import editTask from "../todo-list/edit-task";
 
-function generateAddTaskDialog (todoList) {
+function generateEditTaskDialog (todoItem, todoList) {
+    let index = -1;
+    // item index 
+    for (let i = 0; i < todoList.length; i++) {
+        if (todoItem.equals(todoList.getItem(i))) {
+            index = i;
+        }
+    }
+
+    if (index === -1) {
+        return;
+    }
+
     const dialog = document.querySelector("dialog");
 
     dialog.innerHTML = "";
@@ -16,15 +28,15 @@ function generateAddTaskDialog (todoList) {
 
     const dialogForm = document.querySelector("dialog form");
 
-    const titleDiv = generateTitleInput();
-    const projectDiv = generateProjectInput(todoList.projects);
-    const dateDiv = generateDateInput();
-    const descriptionDiv = generateDescriptionInput();
-    const notesDiv = generateNotesInput();
-    const urgencyDiv = generateUrgencyInput();
-    const buttonsDiv = generateButtons(todoList);
+    const titleDiv = generateTitleInput(index, todoList);
+    const projectDiv = generateProjectInput(index, todoList, todoList.projects);
+    const dateDiv = generateDateInput(index, todoList);
+    const descriptionDiv = generateDescriptionInput(index, todoList);
+    const notesDiv = generateNotesInput(index, todoList);
+    const urgencyDiv = generateUrgencyInput(index, todoList);
+    const buttonsDiv = generateButtons(index,todoList);
 
-    h1.textContent = "Add Task";
+    h1.textContent = "Edit Task";
 
     dialogForm.appendChild(h1);
     dialogForm.appendChild(titleDiv);
@@ -38,7 +50,7 @@ function generateAddTaskDialog (todoList) {
     dialog.showModal();
 }
 
-function generateTitleInput() {
+function generateTitleInput(itemIndex, todoList) {
     const titleDiv = document.createElement("div");
     const titleLabel = document.createElement("label");
     const titleInput = document.createElement("input");
@@ -54,6 +66,9 @@ function generateTitleInput() {
     titleInput.setAttribute("maxlength", "30");
     titleInput.setAttribute("required", "");
 
+    titleInput.value = `${todoList.getItem(itemIndex).title}`
+    titleInput.disabled = true;
+
     titleDiv.classList.add("form-input-row");
 
     titleDiv.appendChild(titleLabel);
@@ -62,7 +77,7 @@ function generateTitleInput() {
     return titleDiv;
 }
 
-function generateProjectInput(projects) {
+function generateProjectInput(itemIndex, todoList, projects) {
     const projectDiv = document.createElement("div");
     const projectLabel = document.createElement("label");
     const projectInput = document.createElement("input");
@@ -89,6 +104,8 @@ function generateProjectInput(projects) {
     projectInput.setAttribute("list", "projects");
     projectInput.setAttribute("required", "");
 
+    projectInput.value = `${todoList.getItem(itemIndex).project}`;
+
     projectDiv.classList.add("form-input-row");
 
     projectDiv.appendChild(projectLabel);
@@ -98,7 +115,7 @@ function generateProjectInput(projects) {
     return projectDiv;
 }
 
-function generateDateInput() {
+function generateDateInput(itemIndex, todoList) {
     const dateDiv = document.createElement("div");
     const dateLabel = document.createElement("label");
     const dateInput = document.createElement("input");
@@ -116,6 +133,8 @@ function generateDateInput() {
     dateInput.setAttribute("min", today);
     dateInput.setAttribute("required", "");
 
+    dateInput.value = `${todoList.getItem(itemIndex).dueDate}`;
+
     dateDiv.classList.add("form-input-row");
 
     dateDiv.appendChild(dateLabel);
@@ -124,7 +143,7 @@ function generateDateInput() {
     return dateDiv;
 }
 
-function generateDescriptionInput() {
+function generateDescriptionInput(itemIndex, todoList) {
     const descriptionDiv = document.createElement("div");
     const descriptionLabel = document.createElement("label");
     const descriptionInput = document.createElement("textarea");
@@ -138,6 +157,8 @@ function generateDescriptionInput() {
     descriptionInput.setAttribute("rows", "10");
     descriptionInput.setAttribute("maxlength", "150");
 
+    descriptionInput.value = `${todoList.getItem(itemIndex).description}`;
+
     descriptionDiv.classList.add("form-input-row");
 
     descriptionDiv.appendChild(descriptionLabel);
@@ -146,7 +167,7 @@ function generateDescriptionInput() {
     return descriptionDiv;
 }
 
-function generateNotesInput() {
+function generateNotesInput(itemIndex, todoList) {
     const notesDiv = document.createElement("div");
     const notesLabel = document.createElement("label");
     const notesInput = document.createElement("textarea");
@@ -160,6 +181,8 @@ function generateNotesInput() {
     notesInput.setAttribute("rows", "10");
     notesInput.setAttribute("maxlength", "150");
 
+    notesInput.value = `${todoList.getItem(itemIndex).notes}`;
+
     notesDiv.classList.add("form-input-row");
 
     notesDiv.appendChild(notesLabel);
@@ -168,7 +191,7 @@ function generateNotesInput() {
     return notesDiv;
 }
 
-function generateUrgencyInput() {
+function generateUrgencyInput(itemIndex, todoList) {
     const urgencyDiv = document.createElement("div");
     const urgencyLabel = document.createElement("label");
     const urgencyInput = document.createElement("select");
@@ -183,6 +206,14 @@ function generateUrgencyInput() {
     urgentOption.text = "Urgent";
     extremelyUrgentOption.value = 2;
     extremelyUrgentOption.text = "Extremely Urgent";
+
+    if (todoList.getItem(itemIndex).priority === 0) {
+        noUrgencyOption.selected = "selected";
+    } else if (todoList.getItem(itemIndex).priority === 1){
+        urgentOption.selected = "selected";
+    } else if (todoList.getItem(itemIndex).priority === 2) {
+        extremelyUrgentOption.selected = "selected";
+    }
 
     urgencyLabel.setAttribute("for", "urgency");
     urgencyLabel.innerHTML = `<span>Urgency:</span>`;
@@ -201,7 +232,7 @@ function generateUrgencyInput() {
     return urgencyDiv;
 }
 
-function generateButtons(todoList) {
+function generateButtons(index, todoList) {
     const dialog = document.querySelector("dialog");
     const dialogForm = document.querySelector("dialog form");
     const buttonsDiv = document.createElement("div");
@@ -219,7 +250,7 @@ function generateButtons(todoList) {
     dialogForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        addTask(todoList);
+        editTask(index,todoList);
 
         dialog.close();
     });
@@ -234,4 +265,4 @@ function generateButtons(todoList) {
     return buttonsDiv;
 }
 
-export default generateAddTaskDialog;
+export default generateEditTaskDialog;

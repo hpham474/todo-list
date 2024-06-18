@@ -23,6 +23,7 @@ function addTask(todoList) {
 
     const filter = getFilter();
 
+    todoList.sortByDate();
     generateProjectSidebar(todoList);
     displayTodoList(todoList, filter);
 }

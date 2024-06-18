@@ -1,7 +1,7 @@
 import { format, compareAsc } from "date-fns";
 import generateDetails from "./task-details";
 import removeTask from "../todo-list/remove-task";
-import editTask from "../todo-list/edit-task"
+import generateEditTaskDialog from "./edit-task-dialog";
 
 function displayTodoList(todoList, filter = "none") {
     const content = document.querySelector(".content");
@@ -38,7 +38,7 @@ function displayTodoList(todoList, filter = "none") {
             listElement = filterProject(todoList.getItem(i), todoList, filter);
         } else { // edge case for when deleting last task in a project
             filter = "none";
-            i = 0;
+            i = -1;
         }
 
         if (listElement.childNodes.length === 0) {
@@ -113,7 +113,7 @@ function noFilter(todoItem, todoList) {
         removeTask(todoItem, todoList);
     });
     editButton.addEventListener("click", () => {
-        editTask(todoItem, todoList);
+        generateEditTaskDialog(todoItem, todoList);
     });
 
     taskButton.appendChild(titleTaskButton);
@@ -175,7 +175,7 @@ function filterToday(todoItem, todoList) {
         removeTask(todoItem, todoList);
     });
     editButton.addEventListener("click", () => {
-        editTask(todoItem, todoList);
+        generateEditTaskDialog(todoItem, todoList);
     });
 
     taskButton.appendChild(titleTaskButton);
@@ -236,7 +236,7 @@ function filterUrgent(todoItem, todoList) {
         removeTask(todoItem, todoList);
     });
     editButton.addEventListener("click", () => {
-        editTask(todoItem, todoList);
+        generateEditTaskDialog(todoItem, todoList);
     });
 
     taskButton.appendChild(titleTaskButton);
@@ -297,7 +297,7 @@ function filterProject(todoItem, todoList, project) {
         removeTask(todoItem, todoList);
     });
     editButton.addEventListener("click", () => {
-        editTask(todoItem, todoList);
+        generateEditTaskDialog(todoItem, todoList);
     });
 
     taskButton.appendChild(titleTaskButton);
