@@ -1,5 +1,4 @@
 import { format, compareAsc } from "date-fns";
-import generateProjectSidebar from "./sidebar";
 import generateDetails from "./task-details";
 import removeTask from "../todo-list/remove-task";
 import editTask from "../todo-list/edit-task"
@@ -37,6 +36,9 @@ function displayTodoList(todoList, filter = "none") {
         } else if (todoList.projects.includes(filter)) {
             title.textContent = filter;
             listElement = filterProject(todoList.getItem(i), todoList, filter);
+        } else { // edge case for when deleting last task in a project
+            filter = "none";
+            i = 0;
         }
 
         if (listElement.childNodes.length === 0) {
@@ -109,9 +111,6 @@ function noFilter(todoItem, todoList) {
     });
     checkBoxButton.addEventListener("click", () => {
         removeTask(todoItem, todoList);
-
-        generateProjectSidebar(todoList);
-        displayTodoList(todoList);
     });
     editButton.addEventListener("click", () => {
         editTask(todoItem, todoList);
@@ -174,9 +173,6 @@ function filterToday(todoItem, todoList) {
     });
     checkBoxButton.addEventListener("click", () => {
         removeTask(todoItem, todoList);
-
-        generateProjectSidebar(todoList);
-        displayTodoList(todoList);
     });
     editButton.addEventListener("click", () => {
         editTask(todoItem, todoList);
@@ -238,9 +234,6 @@ function filterUrgent(todoItem, todoList) {
     });
     checkBoxButton.addEventListener("click", () => {
         removeTask(todoItem, todoList);
-
-        generateProjectSidebar(todoList);
-        displayTodoList(todoList);
     });
     editButton.addEventListener("click", () => {
         editTask(todoItem, todoList);
@@ -302,9 +295,6 @@ function filterProject(todoItem, todoList, project) {
     });
     checkBoxButton.addEventListener("click", () => {
         removeTask(todoItem, todoList);
-
-        generateProjectSidebar(todoList);
-        displayTodoList(todoList);
     });
     editButton.addEventListener("click", () => {
         editTask(todoItem, todoList);

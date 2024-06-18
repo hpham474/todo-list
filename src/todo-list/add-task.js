@@ -1,6 +1,7 @@
 import TodoItem from "./todo-item";
 import generateProjectSidebar from "../interface/sidebar";
 import displayTodoList from "../interface/display-list";
+import getFilter from "../interface/get-page";
 
 function addTask(todoList) {
     const title = document.getElementById("title").value;
@@ -20,8 +21,10 @@ function addTask(todoList) {
 
     todoList.addItem(task);
 
+    const filter = getFilter();
+
     generateProjectSidebar(todoList);
-    displayTodoList(todoList);
+    displayTodoList(todoList, filter);
 }
 
 export default addTask;
