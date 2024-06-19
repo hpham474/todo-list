@@ -76,6 +76,7 @@ function displayTodoList(todoList, filter = "none") {
 function noFilter(todoItem, todoList) {
     const listElement = document.createElement("li");
     const taskDiv = document.createElement("div");
+    const urgencyDiv = document.createElement("div");
     const checkBoxButton = document.createElement("button");
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
@@ -119,7 +120,17 @@ function noFilter(todoItem, todoList) {
     taskButton.appendChild(titleTaskButton);
     taskButton.appendChild(dateTaskButton);
 
-    taskDiv.appendChild(checkBoxButton);
+    if (todoItem.priority === 2) {
+        urgencyDiv.classList.add("extremely-urgent");
+    } else if (todoItem.priority === 1) {
+        urgencyDiv.classList.add("urgent");
+    } else {
+        urgencyDiv.classList.add("not-urgent");
+    }
+
+    urgencyDiv.appendChild(checkBoxButton);
+
+    taskDiv.appendChild(urgencyDiv);
     taskDiv.appendChild(taskButton);
     taskDiv.appendChild(editButton);
 
@@ -138,6 +149,7 @@ function filterToday(todoItem, todoList) {
     }
 
     const taskDiv = document.createElement("div");
+    const urgencyDiv = document.createElement("div");
     const checkBoxButton = document.createElement("button");
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
@@ -181,7 +193,17 @@ function filterToday(todoItem, todoList) {
     taskButton.appendChild(titleTaskButton);
     taskButton.appendChild(dateTaskButton);
 
-    taskDiv.appendChild(checkBoxButton);
+    if (todoItem.priority === 2) {
+        urgencyDiv.classList.add("extremely-urgent");
+    } else if (todoItem.priority === 1) {
+        urgencyDiv.classList.add("urgent");
+    } else {
+        urgencyDiv.classList.add("not-urgent");
+    }
+
+    urgencyDiv.appendChild(checkBoxButton);
+
+    taskDiv.appendChild(urgencyDiv);
     taskDiv.appendChild(taskButton);
     taskDiv.appendChild(editButton);
 
@@ -199,6 +221,7 @@ function filterUrgent(todoItem, todoList) {
     }
 
     const taskDiv = document.createElement("div");
+    const urgencyDiv = document.createElement("div");
     const checkBoxButton = document.createElement("button");
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
@@ -242,7 +265,17 @@ function filterUrgent(todoItem, todoList) {
     taskButton.appendChild(titleTaskButton);
     taskButton.appendChild(dateTaskButton);
 
-    taskDiv.appendChild(checkBoxButton);
+    if (todoItem.priority === 2) {
+        urgencyDiv.classList.add("extremely-urgent");
+    } else if (todoItem.priority === 1) {
+        urgencyDiv.classList.add("urgent");
+    } else {
+        urgencyDiv.classList.add("not-urgent");
+    }
+
+    urgencyDiv.appendChild(checkBoxButton);
+
+    taskDiv.appendChild(urgencyDiv);
     taskDiv.appendChild(taskButton);
     taskDiv.appendChild(editButton);
 
@@ -260,6 +293,7 @@ function filterProject(todoItem, todoList, project) {
     }
 
     const taskDiv = document.createElement("div");
+    const urgencyDiv = document.createElement("div");
     const checkBoxButton = document.createElement("button");
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
@@ -303,7 +337,17 @@ function filterProject(todoItem, todoList, project) {
     taskButton.appendChild(titleTaskButton);
     taskButton.appendChild(dateTaskButton);
 
-    taskDiv.appendChild(checkBoxButton);
+    if (todoItem.priority === 2) {
+        urgencyDiv.classList.add("extremely-urgent");
+    } else if (todoItem.priority === 1) {
+        urgencyDiv.classList.add("urgent");
+    } else {
+        urgencyDiv.classList.add("not-urgent");
+    }
+
+    urgencyDiv.appendChild(checkBoxButton);
+
+    taskDiv.appendChild(urgencyDiv);
     taskDiv.appendChild(taskButton);
     taskDiv.appendChild(editButton);
 
