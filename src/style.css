@@ -196,7 +196,7 @@ ul {
 /* Dialog Form */
 
 dialog {
-    width: 30rem;
+    width: 50rem;
     padding: 1rem;
 
     background-color: #27272a;
@@ -305,4 +305,59 @@ textarea:focus {
 #title:disabled {
     background-color: #71717a;
     filter: blur(.5px)
+}
+
+/* Dialog Task Details */
+.details-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.details-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.details-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.details-contents h2 {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.details-sidebar h3 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.details-contents p,
+.details-sidebar p {
+    color: white;
+    font-size: 1rem;
+}
+
+.details-button {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.details-close {
+    height: 2rem;
+    width: 5rem;
+
+    background-color: #a1a1aa;
+
+    border: none;
+    border-radius: .5rem;
+
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
 }
