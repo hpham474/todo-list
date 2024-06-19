@@ -11,7 +11,7 @@ class TodoItem {
         this.#project = project;
         this.#description = description;
         this.#dueDate = dueDate;
-        this.#priority = priority;
+        this.#priority = Number(priority);
         this.#notes = notes;
     }
 
@@ -52,7 +52,7 @@ class TodoItem {
     }
 
     set priority(value) {
-        this.#priority = value;
+        this.#priority = Number(priority);
     }
 
     set notes(value) {

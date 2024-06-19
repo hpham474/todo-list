@@ -13,7 +13,7 @@ if (!localStorage.getItem("todoList")) {
 }
 
 // add event listeners to sidebar
-sidebarButtonFunction();
+sidebarButtonFunction(todoList);
 
 // display default projects
 generateProjectSidebar(todoList);

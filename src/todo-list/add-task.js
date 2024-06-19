@@ -18,7 +18,7 @@ function addTask(todoList) {
         date,
         description,
         notes,
-        urgency);
+        Number(urgency));
 
     todoList.addItem(task);
 

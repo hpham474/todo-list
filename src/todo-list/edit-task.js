@@ -23,8 +23,10 @@ function editTask(itemIndex, todoList) {
         todoList.getItem(itemIndex).notes = notes;
     }
     if (urgency !== todoList.getItem(itemIndex).priority) {
-        todoList.getItem(itemIndex).priority = urgency;
+        todoList.getItem(itemIndex).priority = Number(urgency);
     }
+
+    console.log(todoList.getItem(itemIndex));
 
     const filter = getFilter();
 

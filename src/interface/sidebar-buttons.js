@@ -1,7 +1,7 @@
 import generateAddTaskDialog from "./add-task-dialog";
 import displayTodoList from "./display-list";
 
-function sidebarButtonFunction() {
+function sidebarButtonFunction(todoList) {
     const addTask = document.querySelector(".addTask");
     const inbox = document.querySelector(".inbox");
     const today = document.querySelector(".today");
