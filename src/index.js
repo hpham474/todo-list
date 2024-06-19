@@ -1,9 +1,8 @@
 import './style.css';
 import getTodoList from './todo-list/default-list';
-import generateProjectSidebar from './interface/sidebar';
-import generateAddTaskDialog from './interface/add-task-dialog';
+import sidebarButtonFunction from './interface/sidebar-buttons';
+import generateProjectSidebar from './interface/projects';
 import displayTodoList from './interface/display-list';
-import save from './storage/save';
 import load from './storage/load';
 
 let todoList;
@@ -13,26 +12,11 @@ if (!localStorage.getItem("todoList")) {
     todoList = load();
 }
 
-const addTask = document.querySelector(".addTask");
-const inbox = document.querySelector(".inbox");
-const today = document.querySelector(".today");
-const urgent = document.querySelector(".urgent");
+// add event listeners to sidebar
+sidebarButtonFunction();
 
-addTask.addEventListener("click", () => {
-    generateAddTaskDialog(todoList);
-});
-inbox.addEventListener("click", () => {
-    displayTodoList(todoList);
-});
-today.addEventListener("click", () => {
-    displayTodoList(todoList, "today");
-});
-urgent.addEventListener("click", () => {
-    displayTodoList(todoList, "urgent");
-});
-
-// default projects
+// display default projects
 generateProjectSidebar(todoList);
 
-// default page
+// display default list
 displayTodoList(todoList);

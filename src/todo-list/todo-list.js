@@ -1,4 +1,3 @@
-import TodoItem from "./todo-item";
 import { compareAsc } from "date-fns";
 
 class TodoList {

@@ -1,5 +1,5 @@
 import TodoItem from "./todo-item";
-import generateProjectSidebar from "../interface/sidebar";
+import generateProjectSidebar from "../interface/projects";
 import displayTodoList from "../interface/display-list";
 import getFilter from "../interface/get-page";
 import save from "../storage/save";
