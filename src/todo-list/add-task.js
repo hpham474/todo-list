@@ -2,6 +2,7 @@ import TodoItem from "./todo-item";
 import generateProjectSidebar from "../interface/sidebar";
 import displayTodoList from "../interface/display-list";
 import getFilter from "../interface/get-page";
+import save from "../storage/save";
 
 function addTask(todoList) {
     const title = document.getElementById("title").value;
@@ -24,6 +25,7 @@ function addTask(todoList) {
     const filter = getFilter();
 
     todoList.sortByDate();
+    save(todoList);
     generateProjectSidebar(todoList);
     displayTodoList(todoList, filter);
 }

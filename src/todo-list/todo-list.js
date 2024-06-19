@@ -50,6 +50,12 @@ class TodoList {
         });
     }
 
+    toJson() {
+        return this.#list.map( (item) => {
+            return item.toJson();
+        });
+    }
+
     filter(fn) {
         const filteredTodoList = new TodoList();
         const filteredList = filteredTodoList.list;

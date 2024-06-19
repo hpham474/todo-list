@@ -1,6 +1,7 @@
 import generateProjectSidebar from "../interface/sidebar";
 import displayTodoList from "../interface/display-list";
 import getFilter from "../interface/get-page";
+import save from "../storage/save";
 
 function editTask(itemIndex, todoList) {
     const project = document.getElementById("project").value;
@@ -28,6 +29,7 @@ function editTask(itemIndex, todoList) {
     const filter = getFilter();
 
     todoList.sortByDate();
+    save(todoList);
     generateProjectSidebar(todoList);
     displayTodoList(todoList, filter);
 }

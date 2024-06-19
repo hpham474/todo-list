@@ -59,6 +59,17 @@ class TodoItem {
         this.#notes = value;
     }
 
+    toJson() {
+        return {
+            title: this.#title,
+            project: this.#project,
+            description: this.#description,
+            dueDate: this.#dueDate,
+            priority: this.#priority,
+            notes: this.#notes,
+        };
+    }
+
     equals(other) {
         if (!(other instanceof TodoItem)) {
             return false;
