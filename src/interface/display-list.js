@@ -81,7 +81,11 @@ function noFilter(todoItem, todoList) {
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
     const titleTaskButton = document.createElement("h2");
-    const dateTaskButton = document.createElement("p");
+    const taskDetails = document.createElement("div");
+
+    const date = document.createElement("p");
+    const urgency = document.createElement("p");
+    const project = document.createElement("p");
 
     checkBoxButton.classList.add("checkbox");
     taskButton.classList.add("task");
@@ -95,7 +99,7 @@ function noFilter(todoItem, todoList) {
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
         </svg>`
     titleTaskButton.textContent = todoItem.title;
-    dateTaskButton.textContent = `Due: ${todoItem.dueDate}`;
+    date.textContent = `Due: ${todoItem.dueDate}`;
     editButton.innerHTML = 
         `<svg 
             class="editSVG" 
@@ -117,16 +121,26 @@ function noFilter(todoItem, todoList) {
         generateEditTaskDialog(todoItem, todoList);
     });
 
-    taskButton.appendChild(titleTaskButton);
-    taskButton.appendChild(dateTaskButton);
-
     if (todoItem.priority === 2) {
         urgencyDiv.classList.add("extremely-urgent");
+        urgency.textContent = "Urgency: Extremely Urgent";
     } else if (todoItem.priority === 1) {
         urgencyDiv.classList.add("urgent");
+        urgency.textContent = "Urgency: Urgent";
     } else {
         urgencyDiv.classList.add("not-urgent");
+        urgency.textContent = "Urgency: Not Urgent";
     }
+
+    project.textContent = todoItem.project;
+
+    taskDetails.classList.add("task-button-details");
+    taskDetails.appendChild(date);
+    taskDetails.appendChild(urgency);
+    taskDetails.appendChild(project);
+
+    taskButton.appendChild(titleTaskButton);
+    taskButton.appendChild(taskDetails);
 
     urgencyDiv.appendChild(checkBoxButton);
 
@@ -154,7 +168,11 @@ function filterToday(todoItem, todoList) {
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
     const titleTaskButton = document.createElement("h2");
-    const dateTaskButton = document.createElement("p");
+    const taskDetails = document.createElement("div");
+
+    const date = document.createElement("p");
+    const urgency = document.createElement("p");
+    const project = document.createElement("p");
 
     checkBoxButton.classList.add("checkbox");
     taskButton.classList.add("task");
@@ -168,7 +186,7 @@ function filterToday(todoItem, todoList) {
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
         </svg>`
     titleTaskButton.textContent = todoItem.title;
-    dateTaskButton.textContent = `Due: ${todoItem.dueDate}`;
+    date.textContent = `Due: ${todoItem.dueDate}`;
     editButton.innerHTML = 
         `<svg 
             class="editSVG" 
@@ -190,16 +208,26 @@ function filterToday(todoItem, todoList) {
         generateEditTaskDialog(todoItem, todoList);
     });
 
-    taskButton.appendChild(titleTaskButton);
-    taskButton.appendChild(dateTaskButton);
-
     if (todoItem.priority === 2) {
         urgencyDiv.classList.add("extremely-urgent");
+        urgency.textContent = "Urgency: Extremely Urgent";
     } else if (todoItem.priority === 1) {
         urgencyDiv.classList.add("urgent");
+        urgency.textContent = "Urgency: Urgent";
     } else {
         urgencyDiv.classList.add("not-urgent");
+        urgency.textContent = "Urgency: Not Urgent";
     }
+
+    project.textContent = todoItem.project;
+
+    taskDetails.classList.add("task-button-details");
+    taskDetails.appendChild(date);
+    taskDetails.appendChild(urgency);
+    taskDetails.appendChild(project);
+
+    taskButton.appendChild(titleTaskButton);
+    taskButton.appendChild(taskDetails);
 
     urgencyDiv.appendChild(checkBoxButton);
 
@@ -226,7 +254,11 @@ function filterUrgent(todoItem, todoList) {
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
     const titleTaskButton = document.createElement("h2");
-    const dateTaskButton = document.createElement("p");
+    const taskDetails = document.createElement("div");
+
+    const date = document.createElement("p");
+    const urgency = document.createElement("p");
+    const project = document.createElement("p");
 
     checkBoxButton.classList.add("checkbox");
     taskButton.classList.add("task");
@@ -240,7 +272,7 @@ function filterUrgent(todoItem, todoList) {
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
         </svg>`
     titleTaskButton.textContent = todoItem.title;
-    dateTaskButton.textContent = `Due: ${todoItem.dueDate}`;
+    date.textContent = `Due: ${todoItem.dueDate}`;
     editButton.innerHTML = 
         `<svg 
             class="editSVG" 
@@ -262,16 +294,26 @@ function filterUrgent(todoItem, todoList) {
         generateEditTaskDialog(todoItem, todoList);
     });
 
-    taskButton.appendChild(titleTaskButton);
-    taskButton.appendChild(dateTaskButton);
-
     if (todoItem.priority === 2) {
         urgencyDiv.classList.add("extremely-urgent");
+        urgency.textContent = "Urgency: Extremely Urgent";
     } else if (todoItem.priority === 1) {
         urgencyDiv.classList.add("urgent");
+        urgency.textContent = "Urgency: Urgent";
     } else {
         urgencyDiv.classList.add("not-urgent");
+        urgency.textContent = "Urgency: Not Urgent";
     }
+
+    project.textContent = todoItem.project;
+
+    taskDetails.classList.add("task-button-details");
+    taskDetails.appendChild(date);
+    taskDetails.appendChild(urgency);
+    taskDetails.appendChild(project);
+
+    taskButton.appendChild(titleTaskButton);
+    taskButton.appendChild(taskDetails);
 
     urgencyDiv.appendChild(checkBoxButton);
 
@@ -298,7 +340,11 @@ function filterProject(todoItem, todoList, project) {
     const taskButton = document.createElement("button");
     const editButton = document.createElement("button");
     const titleTaskButton = document.createElement("h2");
-    const dateTaskButton = document.createElement("p");
+    const taskDetails = document.createElement("div");
+
+    const date = document.createElement("p");
+    const urgency = document.createElement("p");
+    const projectName = document.createElement("p");
 
     checkBoxButton.classList.add("checkbox");
     taskButton.classList.add("task");
@@ -312,7 +358,7 @@ function filterProject(todoItem, todoList, project) {
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
         </svg>`
     titleTaskButton.textContent = todoItem.title;
-    dateTaskButton.textContent = `Due: ${todoItem.dueDate}`;
+    date.textContent = `Due: ${todoItem.dueDate}`;
     editButton.innerHTML = 
         `<svg 
             class="editSVG" 
@@ -334,16 +380,26 @@ function filterProject(todoItem, todoList, project) {
         generateEditTaskDialog(todoItem, todoList);
     });
 
-    taskButton.appendChild(titleTaskButton);
-    taskButton.appendChild(dateTaskButton);
-
     if (todoItem.priority === 2) {
         urgencyDiv.classList.add("extremely-urgent");
+        urgency.textContent = "Urgency: Extremely Urgent";
     } else if (todoItem.priority === 1) {
         urgencyDiv.classList.add("urgent");
+        urgency.textContent = "Urgency: Urgent";
     } else {
         urgencyDiv.classList.add("not-urgent");
+        urgency.textContent = "Urgency: Not Urgent";
     }
+
+    projectName.textContent = todoItem.project;
+
+    taskDetails.classList.add("task-button-details");
+    taskDetails.appendChild(date);
+    taskDetails.appendChild(urgency);
+    taskDetails.appendChild(projectName);
+
+    taskButton.appendChild(titleTaskButton);
+    taskButton.appendChild(taskDetails);
 
     urgencyDiv.appendChild(checkBoxButton);
 
