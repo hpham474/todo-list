@@ -7,39 +7,39 @@ const yesterday = sub(today, {days: 1});
 const weekFromNow = add(today, {days: 7});
 
 const todoItem1 = new TodoItem(
-    "title1", 
-    "project1", 
+    "Attend Meeting", 
+    "Work", 
     format(today, "yyyy-MM-dd"),
-    "description1",
+    "Meeting at 12:00PM. Meeting is about upcoming deadlines.",
     1,
-    "notes1");
+    "");
 const todoItem2 = new TodoItem(
-    "title2", 
-    "project1", 
+    "Submit a work ticket on IT", 
+    "Work", 
     format(tommorow, "yyyy-MM-dd"),
-    "description2",
+    "Work laptop is running is having issues.",
     0,
-    "notes2");
+    "Laptop is having issues connecting to VPN");
 const todoItem3 = new TodoItem(
-    "title3", 
-    "project2", 
+    "Unload the dishwasher", 
+    "Chores", 
     format(yesterday, "yyyy-MM-dd"),
-    "description3",
-    1,
-    "notes3");
-const todoItem4 = new TodoItem(
-    "title4", 
-    "project2", 
-    format(today, "yyyy-MM-dd"),
-    "description4",
+    "",
     0,
-    "notes4");
+    "");
+const todoItem4 = new TodoItem(
+    "Mow the the lawn", 
+    "Chores", 
+    format(today, "yyyy-MM-dd"),
+    "",
+    1,
+    "Mow the front yard and backyard");
 const todoItem5 = new TodoItem(
-    "title5", 
-    "project3", 
+    "Submit documents for Accountant", 
+    "Finance", 
     format(weekFromNow, "yyyy-MM-dd"),
-    "description5",
+    "Accountant is asking for documents to complete tax return that coming.",
     2,
-    "notes5");
+    "Bring W-2");
 
 export { todoItem1, todoItem2, todoItem3, todoItem4, todoItem5 };

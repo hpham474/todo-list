@@ -42,6 +42,7 @@ ul {
 .task-filter button,
 .project-list button {
     width: 100%;
+    max-width: 100%;
     height: 3rem;
 
     background-color: #27272a;
@@ -51,6 +52,8 @@ ul {
     border-radius: 1rem;
 
     font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -85,14 +88,19 @@ ul {
 /* Task List */
 
 .content {
+    width: 100%;
+    max-width: 80rem;
     padding: 3rem;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-self: center;
     gap: 2rem;
 }
 
 .content ul {
+    width: 100%;
     display: flex;
     flex-direction: column;
 
@@ -101,7 +109,7 @@ ul {
 
 .content h1 {
     font-size: 3rem;
-    text-overflow: ellipsis;
+    align-self:  flex-start;
 }
 
 /* Tasks */
@@ -135,6 +143,7 @@ ul {
 
 .content .task {
     width: 100%;
+    min-width: 30rem;
     height: calc(5rem - 2px); /* -2px for border */
     padding: .5rem;
 
@@ -151,11 +160,14 @@ ul {
     color: white;
 
     text-align: left;
-    text-overflow: ellipsis;
 }
 
 .task h2 {
+    max-width: 100%;
     font-size: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .task p {
@@ -182,6 +194,9 @@ ul {
 }
 
 .task-button-details p:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-align: right;
 }
 
